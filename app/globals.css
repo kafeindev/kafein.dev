@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth antialiased;
+  }
+  body {
+    @apply bg-white text-black;
+  }
+}
+
+@layer components {
+  .dot {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+}
