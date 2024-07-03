@@ -8,7 +8,9 @@ import { serialize } from "next-mdx-remote/serialize";
 import { Post } from "./types";
 
 export async function getPosts(): Promise<Post[]> {
-  const slugs = await readdir("./resources/posts/", { withFileTypes: true });
+  const slugs = (
+    await readdir("./resources/posts/", { withFileTypes: true })
+  ).filter((dirent) => dirent.isFile() && dirent.name.endsWith(".mdx"));
 
   const posts = await Promise.all(
     slugs.map(async ({ name }) => {
