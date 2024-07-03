@@ -65,7 +65,7 @@ const ProfileNavLinks: NavLinkProps[] = [
   },
   {
     title: "Twitter",
-    href: "https://x.com/KafeinDev",
+    href: "https://x.com/kafeindev",
     iconOutline: <IoLogoTwitter size={20} />,
     includeArrowRightIcon: true,
   },
@@ -77,7 +77,7 @@ const ProfileNavLinks: NavLinkProps[] = [
   },
 ];
 
-const MainSideBarContent = () => {
+export const MainSideBarContent = () => {
   return (
     <>
       <a href="https://github.com/kafeindev/kafein.dev" target="_blank">
@@ -91,7 +91,7 @@ const MainSideBarContent = () => {
       <hr className="bg-gray-150 mb-3 mt-1.5 h-0.5 w-full" />
       <NavLinkWrapper child={NavLinks} />
       <hr className="bg-gray-150 my-3 h-0.5 w-full" />
-      <h1 className="mb-2 px-3 text-xs font-semibold opacity-50">Profiles</h1>
+      <h1 className="mb-2 px-3 text-xs font-semibold opacity-50">Online</h1>
       <NavLinkWrapper child={ProfileNavLinks} />
       <div className="mt-auto flex justify-center">
         <h1 className="text-gray-500">kafein.dev</h1>
@@ -99,5 +99,3 @@ const MainSideBarContent = () => {
     </>
   );
 };
-
-export default MainSideBarContent;

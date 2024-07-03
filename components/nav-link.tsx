@@ -6,11 +6,11 @@ import { LuArrowUpRight } from "react-icons/lu";
 
 import { cn, isExternalLink } from "@/lib/utils";
 
-type NavLinkWrapperProps = {
+export type NavLinkWrapperProps = {
   child: NavLinkProps[];
 };
 
-const NavLinkWrapper = (props: NavLinkWrapperProps) => {
+export const NavLinkWrapper = (props: NavLinkWrapperProps) => {
   const pathname = usePathname();
 
   return (
@@ -20,7 +20,12 @@ const NavLinkWrapper = (props: NavLinkWrapperProps) => {
           <NavLink
             key={index}
             {...child}
-            isSelected={child.href === pathname}
+            isSelected={
+              child.href === pathname ||
+              (pathname !== null &&
+                child.href !== "/" &&
+                pathname.startsWith(child.href))
+            }
           />
         );
       })}
@@ -28,9 +33,11 @@ const NavLinkWrapper = (props: NavLinkWrapperProps) => {
   );
 };
 
-type NavLinkProps = {
+export type NavLinkProps = {
+  className?: string;
+  children?: JSX.Element;
   href: string;
-  title: string;
+  title?: string;
   icon?: JSX.Element;
   iconOutline?: JSX.Element;
   isSelected?: boolean;
@@ -38,22 +45,26 @@ type NavLinkProps = {
   includeArrowRightIcon?: boolean;
 };
 
-const NavLink = (props: NavLinkProps) => {
+export const NavLink = (props: NavLinkProps) => {
   const icon = props.isSelected
     ? props.icon ?? props.iconOutline
     : props.iconOutline ?? props.icon;
   const content = (
     <div
       className={cn(
-        "flex h-10 w-full items-center gap-5 rounded-md px-3 text-sm font-medium text-black transition-colors duration-200 hover:bg-gray-200",
+        "flex min-h-10 w-full items-center gap-5 rounded-md px-3 text-sm font-medium text-black transition-colors duration-200 hover:bg-gray-200",
         {
           "text-foreground bg-black font-semibold text-white hover:bg-black":
             props.isSelected,
-        }
+        },
+        props.className
       )}
     >
       {icon}
-      <p>{props.title}</p>
+      <div className="flex h-full flex-col">
+        {props.title && <p>{props.title}</p>}
+        {props.children}
+      </div>
       {props.includeArrowRightIcon && (
         <LuArrowUpRight size={16} className="ml-auto" />
       )}
@@ -83,6 +94,3 @@ const NavLink = (props: NavLinkProps) => {
 
   return <Link href={props.href}>{content}</Link>;
 };
-
-export { NavLinkWrapper, NavLink };
-export type { NavLinkWrapperProps, NavLinkProps };
