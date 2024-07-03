@@ -20,3 +20,7 @@ cd kafein.dev
 npm install
 npm run dev
 ```
+
+## License
+
+Licensed under the [MIT License](https://github.com/kafeindev/kafein.dev/blob/master/LICENSE).
