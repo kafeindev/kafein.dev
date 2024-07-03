@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This is the repository for my personal website built with Next.js.
+This is the repository for my personal website.
 
 ## Tech Stack
 
