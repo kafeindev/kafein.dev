@@ -9,6 +9,7 @@ This is the repository for my personal website built with Next.js.
 - [**Next.js**](https://nextjs.org/)
 - [**Tailwind CSS**](https://tailwindcss.com/)
 - [**shadcn/ui**](https://ui.shadcn.com/)
+- [**Vercel**](https://vercel.com/)
 
 ## Installation
 
